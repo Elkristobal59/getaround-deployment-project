@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Données (Optionnel)
+# Si tes fichiers CSV sont très gros, tu peux les ignorer, 
+# mais pour ce projet Jedha, il est souvent préférable de les garder 
+# pour que l'évaluateur puisse faire tourner ton train.py.
