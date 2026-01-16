@@ -1,8 +1,9 @@
 fastapi
 uvicorn
 pandas
-scikit-learn
 joblib
+scikit-learn
+streamlit
+plotly
 openpyxl
-matplotlib
-seaborn
+requests
