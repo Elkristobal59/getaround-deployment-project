@@ -1,3 +1,15 @@
+---
+title: Getaround Pricing Api
+emoji: 🚗
+colorFrom: blue
+colorTo: green
+sdk: docker
+pinned: false
+---
+
+
+
+
 # 🚗 Getaround Decision Support System - Christopher GILLERON
 
 Ce projet a été réalisé dans le cadre de la certification **Concepteur et Développeur en Science des Données** chez **JEDHA**. 
