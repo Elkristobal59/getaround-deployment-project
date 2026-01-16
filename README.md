@@ -1,35 +1,81 @@
-# 🚗 Projet Getaround - Christopher GILLERON
+# 🚗 Getaround Decision Support System - Christopher GILLERON
 
-Ce projet a été réalisé par **Christopher GILLERON** dans le cadre de la formation **Concepteur et Développeur en Science des Données** suivie chez **JEDHA**. 
+Ce projet a été réalisé dans le cadre de la certification **Concepteur et Développeur en Science des Données** chez **JEDHA**. 
 
-L'objectif est d'accompagner l'entreprise Getaround dans l'amélioration de son expérience utilisateur et l'optimisation des revenus des propriétaires via l'analyse de données et le Machine Learning.
+L'objectif est de fournir à **Getaround** une solution complète pour gérer les frictions opérationnelles (retards) et optimiser la stratégie de tarification via le Machine Learning.
+
+---
 
 ## 🎯 Objectifs du Projet
-1. **Analyse des retards :** Déterminer l'impact des retards de restitution sur les locations suivantes et suggérer un seuil de sécurité (buffer) entre deux réservations.
-2. **Optimisation des prix :** Créer un modèle de Machine Learning capable de suggérer un prix de location journalier optimal pour les propriétaires.
-3. **Déploiement :** Mettre à disposition un Dashboard interactif pour les décisions business et une API de prédiction pour l'intégration technique.
+
+1.  **Analyse des retards :** Évaluer l'impact des retards de restitution et recommander un seuil de sécurité (buffer) entre deux locations.
+2.  **Pricing Engine :** Développer un modèle de Machine Learning prédisant le prix de location journalier optimal.
+3.  **Déploiement Industriel :** Mise en production d'un Dashboard décisionnel et d'une API de production.
 
 ---
 
-## 📊 1. Dashboard d'Analyse (Streamlit)
-Le dashboard permet au Product Manager d'explorer les données de retard et de simuler l'impact d'un délai minimum entre deux locations.
+## 🏗️ Architecture du Projet
 
-* **Lien du Dashboard :** [INSERE_ICI_TON_URL_STREAMLIT_HUGGING_FACE]
-* **Insights clés :** * Environ **52%** des utilisateurs restituent leur véhicule en retard.
-    * Les voitures équipées de la technologie **Connect** présentent des retards moins fréquents que celles sous contrat **Mobile**.
-    * Un seuil de **120 minutes** est recommandé pour régler la majorité des collisions critiques.
+L'écosystème repose sur deux composants distincts et interconnectés, déployés sur **Hugging Face Spaces** :
 
----
+### 📊 1. Dashboard d'Analyse (Streamlit)
+Outil destiné aux Product Managers pour piloter la politique de "seuil de sécurité".
+* **Fonctionnalités :** Visualisation des distributions, analyse Connect vs Mobile, et simulateur d'efficacité du buffer.
+* **Lien :** [Accéder au Dashboard](https://huggingface.co/spaces/Elkristobal59/getaround-dashboard) *(Vérifie ton URL exacte)*
 
-## ⚡ 2. API de Prédiction (FastAPI)
-L'API permet d'interroger notre modèle de Machine Learning pour obtenir une suggestion de prix en temps réel basée sur les caractéristiques du véhicule.
-
-* **Documentation interactive (Swagger) :** [INSERE_ICI_TON_URL_API_HUGGING_FACE]/docs
+### ⚡ 2. API de Prédiction (FastAPI)
+Interface technique permettant d'intégrer les prédictions de prix dans n'importe quelle application tierce.
+* **Documentation interactive (Swagger) :** [https://elkristobal59-getaround-pricing-api.hf.space/docs](https://elkristobal59-getaround-pricing-api.hf.space/docs)
 * **Endpoint :** `POST /predict`
 
-### Exemple de requête avec cURL :
-```bash
-curl -i -H "Content-Type: application/json" \
-     -X POST \
-     -d '{"input": [["Citroën", 140411, 100, "diesel", "black", "convertible", true, true, false, false, true, true, true]]}' \
-     https://[TON_URL_API]/predict
+---
+
+## 🧠 Machine Learning & Data Science
+
+### Modèle de Prédiction
+* **Algorithme :** Régression (RandomForestRegressor(n_estimators=100, random_state=42)) entraînée sur un dataset de caractéristiques techniques.
+* **Features (13) :** Marque, kilométrage, puissance moteur, type de carburant, couleur, type de véhicule, et options (GPS, Clim, Connect, etc.).
+* **Pipeline de données :** * **Preprocessing :** Standardisation des données numériques (`StandardScaler`) et encodage des variables catégorielles (`OneHotEncoder`).
+* **Gestion des Outliers :** Nettoyage des valeurs extrêmes sur les retards (> 12h) pour garantir la fiabilité des analyses statistiques.
+
+
+
+### Insights Business Clés
+* **Retards :** Environ **44%** des locations subissent un retard. 
+* **Technologie :** Le système **Connect** offre une meilleure régularité de restitution que le système **Mobile**.
+* **Recommandation :** L'application d'un seuil de **120 minutes** entre deux locations permet d'absorber la majorité des retards sans impacter drastiquement le volume de réservations.
+
+---
+## 🚀 Installation & Utilisation locale
+
+1. **Cloner le projet :**
+   ```bash
+   git clone [https://github.com/Elkristobal59/getaround-deployment-project.git](https://github.com/Elkristobal59/getaround-deployment-project.git)
+Installer les dépendances :
+
+Bash
+
+pip install -r requirements.txt
+Lancer le Dashboard :
+
+Bash
+
+streamlit run streamlit_app.py
+Lancer l'API :
+
+Bash
+
+uvicorn app:app --reload
+🛠️ Stack Technique
+Langage : Python (Pandas, Scikit-Learn, Joblib)
+
+Dashboard : Streamlit
+
+API : FastAPI & Pydantic
+
+Visualisation : Plotly Express
+
+Déploiement : GitHub, Hugging Face Spaces, Git LFS
+
+
+---
