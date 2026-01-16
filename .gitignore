@@ -12,6 +12,7 @@ ENV/
 # OS
 .DS_Store
 Thumbs.db
+requirements.txt 
 
 # Données (Optionnel)
 # Si tes fichiers CSV sont très gros, tu peux les ignorer, 
