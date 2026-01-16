@@ -21,7 +21,7 @@ L'écosystème repose sur deux composants distincts et interconnectés, déploy�
 ### 📊 1. Dashboard d'Analyse (Streamlit)
 Outil destiné aux Product Managers pour piloter la politique de "seuil de sécurité".
 * **Fonctionnalités :** Visualisation des distributions, analyse Connect vs Mobile, et simulateur d'efficacité du buffer.
-* **Lien :** [Accéder au Dashboard]([(https://huggingface.co/spaces/Elkristobal59/getaround-analysis-dashboard)])
+**Lien :** [Accéder au Dashboard](https://huggingface.co/spaces/Elkristobal59/getaround-analysis-dashboard) 
 
 ### ⚡ 2. API de Prédiction (FastAPI)
 Interface technique permettant d'intégrer les prédictions de prix dans n'importe quelle application tierce.
